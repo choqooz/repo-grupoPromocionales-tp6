@@ -15,9 +15,13 @@ public class Producto {
 	@Column(name = "id")
 	private Long id;
 	
+	@Column(name = "pro_nombre" , length = 50 , nullable = false)
 	private String nombre;
+	@Column(name = "pro_precio" , nullable = false)
 	private double precio;
+	@Column(name = "pro_marca" , length = 50 , nullable = false)
 	private String marca;
+	@Column(name = "pro_stock" , nullable = false)
 	private int stock;
 	
 	

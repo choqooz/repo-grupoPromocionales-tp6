@@ -19,7 +19,9 @@ public class Compra {
 	
 	@Autowired
 	private Producto producto;
+	@Column(name = "com_cantidad" , nullable = false)
 	private int cantidad;
+	@Column(name = "com_total" , nullable = false)
 	private double total;
 	
 	

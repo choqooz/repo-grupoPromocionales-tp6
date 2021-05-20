@@ -22,16 +22,25 @@ public class Cliente {
 	@Column(name = "id")
 	private Long id;
 	
+	@Column(name = "cli_tipoDocumento" , length = 20 , nullable = false)
 	private String tipoDocumento ;
+	@Column(name = "cli_nroDocumento" , nullable = false)
 	private int nroDocumento;
+	@Column(name = "cli:nombreApellido" , length = 100 , nullable = false)
 	private String nombreApellido;
+	@Column(name = "cli_email" , length = 50 , nullable = true)
 	private String email;
+	@Column(name = "cli_password" , length = 30 , nullable = false)
 	private String password;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "cli_fechaNacimiento" , nullable = false)
 	private LocalDate fechaNacimiento;
+	@Column(name = "cli_codigoATelefono" , nullable = false)
 	private int codigoAreaTelefono;
+	@Column(name = "cli_nroTelefono" , nullable = false)
 	private int nroTelefono;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "cli_fechaUltimaCompra" , nullable = true)
 	private LocalDate fechaUltimaCompra; 
 	
 	public Cliente() {
