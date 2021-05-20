@@ -48,7 +48,7 @@ public class Cliente {
 	private LocalDate fechaUltimaCompra; 
 	
 	public Cliente() {
-		
+	 //	
 	}
 
 	
