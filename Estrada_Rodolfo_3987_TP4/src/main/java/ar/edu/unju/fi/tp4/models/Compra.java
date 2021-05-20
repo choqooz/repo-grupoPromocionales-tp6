@@ -14,7 +14,7 @@ public class Compra {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "comp_id")
+	@Column(name = "id")
 	private Long id;
 	
 	@Autowired
