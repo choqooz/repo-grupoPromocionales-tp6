@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -28,6 +30,9 @@ public class Producto {
 	@Column(name = "pro_stock" , nullable = false)
 	private int stock;
 	
+	@ManyToOne
+	@JoinColumn(name = "compra_id" , nullable = true)
+	private Compra compra;
 	
 	public Producto() {
 		//
@@ -102,6 +107,22 @@ public class Producto {
 		this.stock = stock;
 	}
 
+	
+
+	/**
+	 * @return the compra
+	 */
+	public Compra getCompra() {
+		return compra;
+	}
+
+
+	/**
+	 * @param compra the compra to set
+	 */
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
 
 
 	@Override

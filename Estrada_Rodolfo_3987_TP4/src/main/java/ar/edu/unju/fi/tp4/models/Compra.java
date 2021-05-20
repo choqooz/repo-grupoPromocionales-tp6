@@ -1,10 +1,15 @@
 package ar.edu.unju.fi.tp4.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +26,8 @@ public class Compra {
 	@Column(name = "id")
 	private Long id;
 	
-	@Autowired
-	private Producto producto;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy= "compra")
+	private List<Producto> productos;
 	
 	@Column(name = "com_cantidad" , nullable = false)
 	private int cantidad;
@@ -34,21 +39,6 @@ public class Compra {
 		//
 	}
 	
-	
-	/**
-	 * @param id
-	 * @param producto
-	 * @param cantidad
-	 * @param total
-	 */
-	public Compra(Long id, Producto producto, int cantidad, double total) {
-		super();
-		this.id = id;
-		this.producto = producto;
-		this.cantidad = cantidad;
-		this.total = total;
-	}
-
 	
 
 	/**
@@ -68,12 +58,18 @@ public class Compra {
 	}
 
 
-
-	public Producto getProducto() {
-		return producto;
+	/**
+	 * @return the producto
+	 */
+	public List<Producto> getProductos() {
+		return productos;
 	}
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+
+	/**
+	 * @param producto the producto to set
+	 */
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
 	
 	public int getCantidad() {
@@ -84,7 +80,7 @@ public class Compra {
 	}
 	
 	public double getTotal() {
-		total=producto.getPrecio()*this.cantidad;
+		//total=producto.getPrecio()*this.cantidad;
 		return total;
 	}
 	
@@ -96,9 +92,8 @@ public class Compra {
 
 	@Override
 	public String toString() {
-		return "Compra [id=" + id + ", producto=" + producto + ", cantidad=" + cantidad + ", total=" + total + "]";
+		return "Compra [id=" + id + ", productos=" + productos + ", cantidad=" + cantidad + ", total=" + total + "]";
 	}
-	
 	
 	
 	
