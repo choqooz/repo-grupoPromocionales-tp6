@@ -46,12 +46,12 @@ public class CompraServiceImp implements ICompraService {
 	public void generarListaCompra() 
 	{
 		compras= TablaCompra.compras;
-		Producto producto = productoService.getUltimoProducto();
+		//Producto producto = productoService.getUltimoProducto();
 		int cantidad=6;
 		Long id=1L;
 		Compra compra =new Compra();
 		compra.setCantidad(cantidad);
-		compra.setProducto(producto);
+		//compra.setProducto(producto);
 		compra.setId(id);
 		//compra.setProductoCod(id);
 		compras.add(compra);
