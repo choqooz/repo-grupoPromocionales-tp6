@@ -31,7 +31,7 @@ public class Cliente {
 	
 	@Column(name = "cli_nroDocumento" , nullable = false)
 	private int nroDocumento;
-	@Column(name = "cli:nombreApellido" , length = 100 , nullable = false)
+	@Column(name = "cli_nombreApellido" , length = 100 , nullable = false)
 	private String nombreApellido;
 	@Column(name = "cli_email" , length = 50 , nullable = true)
 	private String email;
