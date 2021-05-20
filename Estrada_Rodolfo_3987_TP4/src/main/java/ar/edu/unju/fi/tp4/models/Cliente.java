@@ -6,29 +6,69 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
+@Table(name = "CLIENTES")
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+	
+	@Column(name = "cli_tipoDocumento" , length = 20 , nullable = false)
 	private String tipoDocumento ;
+	@Column(name = "cli_nroDocumento" , nullable = false)
 	private int nroDocumento;
+	@Column(name = "cli:nombreApellido" , length = 100 , nullable = false)
 	private String nombreApellido;
+	@Column(name = "cli_email" , length = 50 , nullable = true)
 	private String email;
+	@Column(name = "cli_password" , length = 30 , nullable = false)
 	private String password;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "cli_fechaNacimiento" , nullable = false)
 	private LocalDate fechaNacimiento;
+	@Column(name = "cli_codigoATelefono" , nullable = false)
 	private int codigoAreaTelefono;
+	@Column(name = "cli_nroTelefono" , nullable = false)
 	private int nroTelefono;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "cli_fechaUltimaCompra" , nullable = true)
 	private LocalDate fechaUltimaCompra; 
 	
 	public Cliente() {
+	 //	
 	}
 
-	public Cliente(String tipoDocumento, int nroDocumento, String nombreApellido, String email, String password,
-			LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono, LocalDate fechaUltimaCompra) {
+	
+	/**
+	 * @param id
+	 * @param tipoDocumento
+	 * @param nroDocumento
+	 * @param nombreApellido
+	 * @param email
+	 * @param password
+	 * @param fechaNacimiento
+	 * @param codigoAreaTelefono
+	 * @param nroTelefono
+	 * @param fechaUltimaCompra
+	 */
+	public Cliente(Long id, String tipoDocumento, int nroDocumento, String nombreApellido, String email,
+			String password, LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono,
+			LocalDate fechaUltimaCompra) {
 		super();
+		this.id = id;
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
 		this.nombreApellido = nombreApellido;
@@ -40,6 +80,21 @@ public class Cliente {
 		this.fechaUltimaCompra = fechaUltimaCompra;
 	}
 
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 	public String getTipoDocumento() {
 		return tipoDocumento;
 	}

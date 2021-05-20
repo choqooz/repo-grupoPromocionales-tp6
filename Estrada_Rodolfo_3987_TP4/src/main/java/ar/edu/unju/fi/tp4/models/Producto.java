@@ -1,27 +1,74 @@
 package ar.edu.unju.fi.tp4.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
+@Table(name = "PRODUCTOS")
 public class Producto {
 
-	private int codigo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	@Column(name = "id")
+	private Long id;
+	
+	@Column(name = "pro_nombre" , length = 50 , nullable = false)
 	private String nombre;
+	@Column(name = "pro_precio" , nullable = false)
 	private double precio;
+	@Column(name = "pro_marca" , length = 50 , nullable = false)
 	private String marca;
+	@Column(name = "pro_stock" , nullable = false)
 	private int stock;
 	
+	
 	public Producto() {
-		// TODO Auto-generated constructor stub
+		//
 	}
 
-	public int getCodigo() {
-		return codigo;
+
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param precio
+	 * @param marca
+	 * @param stock
+	 */
+	public Producto(Long id, String nombre, double precio, String marca, int stock) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.marca = marca;
+		this.stock = stock;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
 	}
+
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 
 	public String getNombre() {
 		return nombre;
@@ -55,20 +102,14 @@ public class Producto {
 		this.stock = stock;
 	}
 
-	public Producto(int codigo, String nombre, double precio, String marca, int stock) {
-		super();
-		this.codigo = codigo;
-		this.nombre = nombre;
-		this.precio = precio;
-		this.marca = marca;
-		this.stock = stock;
-	}
+
 
 	@Override
 	public String toString() {
-		return "Producto [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca
-				+ ", stock=" + stock + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + ", stock="
+				+ stock + "]";
 	}
-	
+
+
 	
 }

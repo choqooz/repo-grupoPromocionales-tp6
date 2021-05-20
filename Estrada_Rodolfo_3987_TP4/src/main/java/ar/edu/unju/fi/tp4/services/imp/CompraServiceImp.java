@@ -47,8 +47,8 @@ public class CompraServiceImp implements ICompraService {
 	{
 		compras= TablaCompra.compras;
 		Producto producto = productoService.getUltimoProducto();
-		int cantidad=6 ,id=1;
-		
+		int cantidad=6;
+		Long id=1L;
 		Compra compra =new Compra();
 		compra.setCantidad(cantidad);
 		compra.setProducto(producto);
