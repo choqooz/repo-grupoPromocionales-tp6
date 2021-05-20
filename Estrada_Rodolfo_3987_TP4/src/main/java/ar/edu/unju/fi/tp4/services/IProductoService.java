@@ -9,7 +9,7 @@ public interface IProductoService {
 	public void addProducto(Producto producto);
 	public Producto getUltimoProducto();
 	public Producto getProducto();
-	public Producto findByCodigo(int codigo);
+	public Producto findByCodigo(Long codigo);
 	public void generarListProductos();
 	public List<Producto> getListProductos();
 	

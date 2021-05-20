@@ -47,11 +47,11 @@ public class ProductoServiceImp implements IProductoService {
 	}
 
 	@Override
-	public Producto findByCodigo(int codigo) {
+	public Producto findByCodigo(Long codigo) {
 		Producto producto = new Producto();
 		for (int i=0;i<getListProductos().size();i++) {
-			if (codigo==getListProductos().get(i).getCodigo()) {
-				producto.setCodigo(getListProductos().get(i).getCodigo());
+			if (codigo==getListProductos().get(i).getId()) {
+				producto.setId(getListProductos().get(i).getId());
 				producto.setMarca(getListProductos().get(i).getMarca());
 				producto.setNombre(getListProductos().get(i).getNombre());
 				producto.setPrecio(getListProductos().get(i).getPrecio());
@@ -64,7 +64,7 @@ public class ProductoServiceImp implements IProductoService {
 	@Override
 	public void generarListProductos() {
 		productos=TablaProducto.listaProductos;
-		Producto producto = new Producto(10,"Pasta Dental",250d,"Colgate",100);
+		Producto producto = new Producto(10L,"Pasta Dental",250d,"Colgate",100);
 		productos.add(producto);
 		
 	}
