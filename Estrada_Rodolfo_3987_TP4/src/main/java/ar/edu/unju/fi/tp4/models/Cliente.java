@@ -6,11 +6,22 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+	
 	private String tipoDocumento ;
 	private int nroDocumento;
 	private String nombreApellido;
@@ -24,11 +35,27 @@ public class Cliente {
 	private LocalDate fechaUltimaCompra; 
 	
 	public Cliente() {
+		
 	}
 
-	public Cliente(String tipoDocumento, int nroDocumento, String nombreApellido, String email, String password,
-			LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono, LocalDate fechaUltimaCompra) {
+	
+	/**
+	 * @param id
+	 * @param tipoDocumento
+	 * @param nroDocumento
+	 * @param nombreApellido
+	 * @param email
+	 * @param password
+	 * @param fechaNacimiento
+	 * @param codigoAreaTelefono
+	 * @param nroTelefono
+	 * @param fechaUltimaCompra
+	 */
+	public Cliente(Long id, String tipoDocumento, int nroDocumento, String nombreApellido, String email,
+			String password, LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono,
+			LocalDate fechaUltimaCompra) {
 		super();
+		this.id = id;
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
 		this.nombreApellido = nombreApellido;
@@ -40,6 +67,21 @@ public class Cliente {
 		this.fechaUltimaCompra = fechaUltimaCompra;
 	}
 
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 	public String getTipoDocumento() {
 		return tipoDocumento;
 	}

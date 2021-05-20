@@ -1,41 +1,67 @@
 package ar.edu.unju.fi.tp4.models;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Compra {
-	private int id;
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "comp_id")
+	private Long id;
+	
 	@Autowired
 	private Producto producto;
 	private int cantidad;
 	private double total;
 	
-	//se agregó este atributo auxiliar
-	//private int productoCod;
 	
 	public Compra() {
-		super();
+		
 	}
 	
-	public Compra(int id, Producto producto, int cantidad, double total) {
+	
+	/**
+	 * @param id
+	 * @param producto
+	 * @param cantidad
+	 * @param total
+	 */
+	public Compra(Long id, Producto producto, int cantidad, double total) {
 		super();
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.total = total;
 	}
-	
-	
-	
+
 	
 
-	public int getId() {
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+
 	public Producto getProducto() {
 		return producto;
 	}
@@ -58,14 +84,15 @@ public class Compra {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	
-	
-	
+
+
 
 	@Override
 	public String toString() {
 		return "Compra [id=" + id + ", producto=" + producto + ", cantidad=" + cantidad + ", total=" + total + "]";
 	}
+	
+	
 	
 	
 }
