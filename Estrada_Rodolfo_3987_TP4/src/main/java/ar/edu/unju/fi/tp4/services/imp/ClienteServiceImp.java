@@ -12,13 +12,15 @@ import ar.edu.unju.fi.tp4.services.IClienteService;
 import ar.edu.unju.fi.tp4.util.TablaCliente;
 @Service("clienteRamImp")
 public class ClienteServiceImp implements IClienteService {
-	
+	private static final Log LOGGER = LogFactory.getLog(ClienteServiceImp.class);
 	private List<Cliente> clientes = TablaCliente.clientes;
 	
-	private static final Log LOGGER = LogFactory.getLog(ClienteServiceImp.class);
 	
 	@Override
 	public void addCliente(Cliente cliente) {
+		LOGGER.info("Service: IClienteService -> ClienteServiceImp");
+		LOGGER.info("Method: addCliente()");
+		LOGGER.info("Result: object Cliente");
 		if (clientes == null) {
 			generarListaClientes();
 		}
@@ -29,7 +31,7 @@ public class ClienteServiceImp implements IClienteService {
 	public List<Cliente> getClientes() {
 		LOGGER.info("Service: IClienteService -> ClienteServiceImp");
 		LOGGER.info("Method: addCliente()");
-		LOGGER.info("Result: object Cliente");
+		LOGGER.info("Result: devuelve la lista de clientes");
 		LOGGER.info("Se ha agregado un cliente: "+ clientes ); 
 		return clientes;
 	}
