@@ -23,12 +23,18 @@ public class ProductoServiceImp implements IProductoService {
 	List<Producto> productos;
 	@Override
 	public void addProducto(Producto producto) {
+		LOGGER.info("Service: IProductoService -> ProductoServiceImp");
+		LOGGER.info("Method: addProducto()");
+		LOGGER.info("Result: agrega un producto a la lista de productos");
 		this.productos.add(producto);
 		
 	}
 
 	@Override
 	public Producto getUltimoProducto() {
+		LOGGER.info("Service: IProductoService -> ProductoServiceImp");
+		LOGGER.info("Method: getUltimoProducto()");
+		LOGGER.info("Result: devuelve el ultimo producto agregado de la lista de productos");
 		if (productos==null)
 			generarListProductos();
 		int indUltProd = productos.size() -1;
@@ -38,7 +44,7 @@ public class ProductoServiceImp implements IProductoService {
 
 	@Override
 	public Producto getProducto() {
-		LOGGER.info("Service: IPersonaService -> PersonaServiceImp");
+		LOGGER.info("Service: IProductoService -> ProductoServiceImp");
 		LOGGER.info("Method: getProducto()");
 		LOGGER.info("Result: object Producto");
 		//LOGGER.info("Se ha guardado un producto: "+getUltimoProducto());
@@ -48,6 +54,9 @@ public class ProductoServiceImp implements IProductoService {
 
 	@Override
 	public Producto findByCodigo(Long codigo) {
+		LOGGER.info("Service: IProductoService -> ProductoServiceImp");
+		LOGGER.info("Method: findByCodigo()");
+		LOGGER.info("Result: devuelve un producto de la lista de productos buscado por su Codigo");
 		Producto producto = new Producto();
 		for (int i=0;i<getListProductos().size();i++) {
 			if (codigo==getListProductos().get(i).getId()) {
@@ -63,6 +72,9 @@ public class ProductoServiceImp implements IProductoService {
 
 	@Override
 	public void generarListProductos() {
+		LOGGER.info("Service: IProductoService -> ProductoServiceImp");
+		LOGGER.info("Method: generarListProductos()");
+		LOGGER.info("Result: genera la lista de productos");
 		productos=TablaProducto.listaProductos;
 		Producto producto = new Producto(10L,"Pasta Dental",250d,"Colgate",100);
 		productos.add(producto);
@@ -71,6 +83,9 @@ public class ProductoServiceImp implements IProductoService {
 
 	@Override
 	public List<Producto> getListProductos() {
+		LOGGER.info("Service: IProductoService -> ProductoServiceImp");
+		LOGGER.info("Method: getListProducto()");
+		LOGGER.info("Result: devuelve la lista de productos");
 		if (productos==null)
 			generarListProductos();
 		return productos;
